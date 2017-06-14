@@ -1,4 +1,4 @@
-##mongoDB环境搭建
+## mongoDB环境搭建
 1.下载mongoDB包：http://www.mongodb.org/downloads
 2.安装路径，例如：比如d:\\mongodb
 3.创建文件夹：
