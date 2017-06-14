@@ -1,4 +1,4 @@
-#Zookeeper安装配置
+# Zookeeper安装配置
 1.下载Zookeeper安装包，解压至随意目录下
 2.修改conf下的zoo_sample.cfg文件为zoo.cfg,因为Zookeeper启动时会自动找改文件
 3.Dubbo注册中心详解（四种注册中心）：
