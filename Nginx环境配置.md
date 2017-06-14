@@ -120,4 +120,4 @@
 	#运行 		 start nginx
 	#重启 		 nginx -s reload
 	#查看配置是否生效	nginx -t
-    	#关闭服务	  nginx -s stop
+    #关闭服务	  nginx -s stop
