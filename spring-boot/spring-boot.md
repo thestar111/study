@@ -1,8 +1,8 @@
-##Spring-Boot学习笔记
-####1.IDE：Intelij, Eclipse(STS)
-####2.JDK: 1.7以上
-####3.build tool：gradle 3 and maven 3
-##新建项目
+## Spring-Boot学习笔记
+#### 1.IDE：Intelij, Eclipse(STS)
+#### 2.JDK: 1.7以上
+#### 3.build tool：gradle 3 and maven 3
+## 新建项目
 
 	1.添加依赖：
     <parent>
