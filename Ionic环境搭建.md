@@ -1,4 +1,4 @@
-##Ionic Android开发环境搭建
+## Ionic Android开发环境搭建
 	#Ionic简单介绍：
      	Ionic是一款基于PhoneGap及AngularJS开发Hybrid/Web APP的前端框架，类似的其他框架有Intel XDK等。
         简单来说就是可以将你的Web应用打包发布成IOS/Android APP，并且提供了PhoneGap之外很多强大的服务和新的特性。
@@ -9,7 +9,7 @@
                 Android SDK
                 NodeJS
         #以上名词这里就不赘述，如果有不清楚的可以自行查阅#
-####（二）安装步骤：
+#### （二）安装步骤：
 	安装JDK
     安装Apache Ant打包工具
     安装Android SDK环境：添加两个路径到系统环境path路径下
