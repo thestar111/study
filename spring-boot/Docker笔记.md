@@ -1,9 +1,9 @@
-##Docker笔记
+## Docker笔记
 	install docker：
 	linux：Centos下安装，yum install docker，然后启动docker：service docker start
 	windows：安装 Docker Toolbox，一步一步默认安装即可，安装完成运行Docker quickstart即可，如果启动失败可能是boot2docker启动器下不来，需要手动下载放到C盘目录下即可。默认启动一个192.168.0.99.100的镜像服务器。
 
-##镜像Build
+## 镜像Build
 	Dockerfile文件：
     Command指令：
     FROM
@@ -65,7 +65,7 @@
 				RUN /usr/local/bin/python-build --dir /app/src
 				使用ONBUILD指令的镜像，推荐在标签中注明，例如 ruby:1.9-onbuild
 
-##Dockerfile Examples
+## Dockerfile Examples
 	# Nginx
 	#
 	# VERSION               0.0.1
@@ -107,7 +107,7 @@
 	# You᾿ll now have two images, 907ad6c2736f with /bar, and 695d7793cbe4 with
 	# /oink.
 
-##docker build 构建镜像
+## docker build 构建镜像
 	$ docker build --help
 
 	Usage: docker build [OPTIONS] PATH | URL | -
@@ -120,7 +120,7 @@
     --rm=true            Remove intermediate containers after a successful build               # 构建成功后移除过渡层容器
     -t, --tag=""         Repository name (and optionally a tag) to be applied to the resulting image in case of success
 
-##dockerfile 最佳实践
+## dockerfile 最佳实践
 	1.使用.dockerignore文件
 		为了在docker build过程中更快上传和更加高效，应该使用一个.dockerignore文件用来排除构建镜像时不需要的文件或目录。例如,除非.Git在构建过程中需要用到，否则你应该将它添加到.dockerignore文件中，这样可以节省很多时间。
 	2.  避免安装不必要的软件包
@@ -134,7 +134,7 @@
 		mercurial \
 		subversion
 
-##Dockerfile 指令
+## Dockerfile 指令
 	FROM: 只要可能就使用官方镜像库作为基础镜像
     RUN: 为保持可读性、方便理解、可维护性，把长或者复杂的RUN语句使用\分隔符分成多行
 	不建议RUN apt-get update独立成行，否则如果后续包有更新，那么也不会再执行更新
