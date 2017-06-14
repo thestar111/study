@@ -160,3 +160,101 @@
 	    | tar -xJC /usr/src/things \
 	    && make -C /usr/src/things all
     如果不需要添加 tar 文件，推荐使用COPY
+
+## 容器数据管理
+支持两种方式管理数据
+###### 数据卷
+###### 数据卷容器
+
+	$ sudo docker run --name data -v /data -t -i ubuntu:14.04 /bin/bash # 创建数据卷绑定到到新建容器，新建容器中会创建 /data 数据卷 bash-4.1# ls -ld /data/
+    drwxr-xr-x 2 root root 4096 Jul 23 06:59 /data/
+    bash-4.1# df -Th
+    Filesystem    Type    Size  Used Avail Use% Mounted on
+    ... ...
+                  ext4     91G  4.6G   82G   6% /data
+
+###### 创建的数据卷可以通过docker inspect获取宿主机对应路径
+	$ sudo docker inspect data
+	... ... "Volumes": { "/data": "/var/lib/docker/vfs/dir/151de401d268226f96d824fdf444e77a4500aed74c495de5980c807a2ffb7ea9" }, # 可以看到创建的数据卷宿主机路径 ... ...
+###### 或者直接指定获取
+    $ sudo docker inspect --format="{{ .Volumes }}" data
+    map[/data: /var/lib/docker/vfs/dir/151de401d268226f96d824fdf444e77a4500aed74c495de5980c807a2ffb7ea9]
+
+###### 挂载宿主机目录为一个数据卷
+	-v选项除了可以创建卷，也可以挂载当前主机的一个目录到容器中。
+
+###### 例子
+	$ sudo docker run --name web -v /source/:/web -t -i ubuntu:14.04 /bin/bash
+    bash-4.1# ls -ld /web/
+    drwxr-xr-x 2 root root 4096 Jul 23 06:59 /web/
+    bash-4.1# df -Th
+    ... ...
+                  ext4     91G  4.6G   82G   6% /web
+	bash-4.1# exit
+
+###### 创建和挂载一个数据卷容器
+	如果你有一些持久性的数据并且想在容器间共享，或者想用在非持久性的容器上，最好的方法是创建一个数据卷容器，然后从此容器上挂载数据。
+###### 创建数据卷容器
+	$ sudo docker run -t -i -d -v /test --name test ubuntu:14.04 echo hello
+    使用--volumes-from选项在另一个容器中挂载 /test 卷。不管 test 容器是否运行，其它容器都可以挂载该容器数据卷，当然如果只是单独的数据卷是没必要运行容器的
+    $ sudo docker run -t -i -d --volumes-from test --name test1 ubuntu:14.04 /bin/bash
+###### 添加另一个容器
+    $ sudo docker run -t -i -d --volumes-from test --name test2 ubuntu:14.04 /bin/bash
+###### 也可以继承其它挂载有 /test 卷的容器
+	$ sudo docker run -t -i -d --volumes-from test1 --name test3 ubuntu:14.04 /bin/bash
+![docker icon](docker.png)
+
+
+###### 备份、恢复或迁移数据卷
+###### 备份
+	$ sudo docker run --rm --volumes-from test -v $(pwd):/backup ubuntu:14.04 tar cvf /backup/test.tar /test
+    tar: Removing leading `/' from member names
+    /test/
+    /test/b
+    /test/d
+    /test/c
+    /test/a
+    说明：启动一个新的容器并且从test容器中挂载卷，然后挂载当前目录到容器中为 backup，并备份 test 卷中所有的数据为 test.tar，执行完成之后删除容器--rm，此时备份就在当前的目录下，名为test.tar
+
+###### 恢复
+	你可以恢复给同一个容器或者另外的容器，新建容器并解压备份文件到新的容器数据卷
+	$ sudo docker run -t -i -d -v /test --name test4 ubuntu:14.04  /bin/bash
+    $ sudo docker run --rm --volumes-from test4 -v $(pwd):/backup ubuntu:14.04 tar xvf /backup/test.tar -C /
+    # 恢复之前的文件到新建卷中，执行完后自动删除容器 test/ test/b test/d test/c test/a
+
+###### 删除 Volumes
+	docker rm -v删除容器时添加了-v选项
+	docker run --rm运行容器时添加了--rm选项
+	否则，会在/var/lib/docker/vfs/dir目录中遗留很多不明目录。
+
+## 链接容器
+	docker 允许把多个容器连接在一起，相互交互信息。docker 链接会创建一种容器父子级别的关系，其中父容器可以看到其子容器提供的信息
+
+###### 容器命名
+	在创建容器时，如果不指定容器的名字，则默认会自动创建一个名字，这里推荐给容器命名：
+###### 1、给容器命名方便记忆，如命名运行 web 应用的容器为 web
+###### 2、为 docker 容器提供一个参考，允许方便其他容器调用，如把容器 web 链接到容器 db
+###### 可以通过--name选项给容器自定义命名：
+	$ sudo docker run -d -t -i --name test ubuntu:14.04 bash
+    $ sudo docker  inspect --format="{{ .Nmae }}" test
+    /test
+###### 注：容器名称必须唯一，即你只能命名一个叫test的容器。如果你想复用容器名，则必须在创建新的容器前通过docker rm删除旧的容器或者创建容器时添加--rm选项。
+
+###### 链接容器
+	$ sudo docker run -d --name db training/postgres
+
+###### 基于 training/postgres 镜像创建一个名为 db 的容器，然后下面创建一个叫做 web 的容器，并且将它与 db 相互连接在一起
+	$ sudo docker run -d -P --name web --link db:db training/webapp python app.py
+###### --link <name or id>:alias选项指定链接到的容器
+
+###### 查看 web 容器的链接关系:
+	$ sudo docker inspect -f "{{ .HostConfig.Links }}" web
+	[/db:/web/db]
+###### 容器之间的链接实际做了什么？一个链接允许一个源容器提供信息访问给一个接收容器。在本例中，web 容器作为一个接收者，允许访问源容器 db 的相关服务信息。Docker 创建了一个安全隧道而不需要对外公开任何端口给外部容器，因此不需要在创建容器的时候添加-p或-P指定对外公开的端口，这也是链接容器的最大好处，本例为 PostgreSQL 数据库
+
+
+
+
+
+
+
