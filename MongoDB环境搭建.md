@@ -1,16 +1,16 @@
 ## mongoDB环境搭建
-1.下载mongoDB包：http://www.mongodb.org/downloads
-2.安装路径，例如：比如d:\\mongodb
-3.创建文件夹：
-4.	d:\mongodb\data\db		存放数据文件
-5.	d:\mongodb\data\log		存放日志文件
+#### 1.下载mongoDB包：http://www.mongodb.org/downloads
+#### 2.安装路径，例如：比如d:\\mongodb
+#### 3.创建文件夹：
+#### 4.	d:\mongodb\data\db		存放数据文件
+#### 5.	d:\mongodb\data\log		存放日志文件
 
-4.mangodb启动命令
+#### 4.mangodb启动命令
 	# mongod -dbpath "d:\mongodb\data\db" --port 10001 指定端口
     # MongoDB监听的端口是27017，mysql的是3306
     注意：如果保存，请使用如下命令 mongod --dbpath D:\mongodb\data --storageEngine=mmapv1
   	
-5.基本使用命令：
+#### 5.基本使用命令：
 	# mongo [ip地址]:[监听端口]/[数据库]	列如：mongo 127.0.0.1:27017/user
     # show dbs
 	# show databases
