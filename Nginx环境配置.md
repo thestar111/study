@@ -116,8 +116,8 @@
     2.使用root的时候，business不会丢弃掉，他会使用完整的url来匹配，请求路径会变为D:\\apidoc\\portal\\business\\apidocs\\business/index.html
 
 #### Nginx命令：
-cd nginx安装目录:
+	cd nginx安装目录:
 	#运行 		 start nginx
 	#重启 		 nginx -s reload
 	#查看配置是否生效	nginx -t
-    #关闭服务	  nginx -s stop
+    	#关闭服务	  nginx -s stop
