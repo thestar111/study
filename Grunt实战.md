@@ -1,15 +1,15 @@
-##Grunt实战
+## Grunt实战
 	Grunt和 Grunt 插件是通过 npm 安装并管理的，npm是 Node.js 的包管理器。
 	Grunt 0.4.x 必须配合Node.js >= 0.8.0版本使用。；奇数版本号的 Node.js 被认为是不稳定的开发版。
 	在安装 Grunt 前，请确保当前环境中所安装的 npm 已经是最新版本，执行 npm update -g npm 指令进行升级（在某些系统中可能需要 sudo 指令）。
 	如果你已经安装了 Grunt，现在需要参考一些文档手册，那就请看一看 Gruntfile 实例 和如何 配置任务吧。
-##安装 CLI（相对于windows环境）
+## 安装 CLI（相对于windows环境）
 	#输入命令（此时名利执行完之后，grunt加入到系统环境下，grunt-cli任务很简单，调用与gruntfile在同一级目录下的grunt）
 	>npm install -g grunt-cli
-##创建新的 Grunt 项目
+## 创建新的 Grunt 项目
 	需要在项目下，新建文件gruntfile.js和 package.json
     >npm init  命令会创建一个基本的package.json文件
-##安装Grunt 和 Grunt插件
+## 安装Grunt 和 Grunt插件
 	#执行如下命令格式，安装grunt插件
     >npm install <module> --save-dev
     有如下插件：
@@ -38,7 +38,7 @@
         time-grunt
         #模拟后台json数据返回
         grunt-restful-mock
-##Gruntfile文件
+## Gruntfile文件
 	//检查css语法
 		csslint:{
 			src:['css/*.css']
