@@ -1,4 +1,4 @@
-###Nginx环境搭建
+### Nginx环境搭建
 		listen       8889;		监听端口，如果配置多个server的时候，端口需要配置不一样
         server_name  192.168.0.52:35840;		监听之后跳转到哪里去
 
@@ -56,14 +56,14 @@
         #location ~ /\.ht {
         #    deny  all;
         #}
-##配置反向代理
+## 配置反向代理
         location ~ \.jsp$ {  	配置JSP页面又tomcat处理
         	proxy_pass http://localhost:8080;
 		}
 		location ~ \.(html|js|css|png|gif)$ {  	配置一些静态资源有nginx处理
     		root D:/software/developerTools/server/apache-tomcat-7.0.8/webapps/ROOT;
 		}
-##配置多个静态私服
+## 配置多个静态私服
 	* server外添加了一个upstream，而直接在proxy_pass里面直接用http://+upstream的名称来使用， upstream中的server元素必须要注意，不能加http://，但proxy_pass中必须加
 	upstream local_tomcat {
     	server localhost:8080 weight=1;	配置多个私服，weight值越大请求得到的机会越大
@@ -75,7 +75,7 @@
         }
         #......其他省略
 	}
-##nginx正则表达式：
+## nginx正则表达式：
     eg:
     语法:location [=|~|~*|^~] /uri/ { … }
     注意：
@@ -115,7 +115,7 @@
     1.使用alias的时候，他会将URL中的business部分丢掉,请求路径会变为D:\\apidoc\\portal\\business\\apidocs\\index.html
     2.使用root的时候，business不会丢弃掉，他会使用完整的url来匹配，请求路径会变为D:\\apidoc\\portal\\business\\apidocs\\business/index.html
 
-######Nginx命令：
+###### Nginx命令：
 cd nginx安装目录:
 	#运行 		 start nginx
 	#重启 		 nginx -s reload
