@@ -115,7 +115,7 @@
     1.使用alias的时候，他会将URL中的business部分丢掉,请求路径会变为D:\\apidoc\\portal\\business\\apidocs\\index.html
     2.使用root的时候，business不会丢弃掉，他会使用完整的url来匹配，请求路径会变为D:\\apidoc\\portal\\business\\apidocs\\business/index.html
 
-###### Nginx命令：
+#### Nginx命令：
 cd nginx安装目录:
 	#运行 		 start nginx
 	#重启 		 nginx -s reload
