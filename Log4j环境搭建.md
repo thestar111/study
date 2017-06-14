@@ -1,4 +1,4 @@
-##Log4j2环境搭建
+## Log4j2环境搭建
 
 	1.去官方下载log4j,导入jar包
 		log4j-core-xx.jar
@@ -8,7 +8,7 @@
         private static Logger logger = LogManager.getLogger(MyApp.class.getName());
     3.日志级别
     	log4j规定了默认的几个级别：trace<debug<info<warn<error<fatal等
-###配置文件详解
+### 配置文件详解
 	例子1：
     <appenders>
         <Console name="Console" target="SYSTEM_OUT">
