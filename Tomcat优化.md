@@ -1,11 +1,11 @@
-##Tomcat优化
-######Tomcat的Connector是Tomcat接收HTTP请求的关键模块，我们可以配置它来指定IO模式，以及处理通过这个Connector接受到的请求的处理线程数以及其它一些常用的HTTP策略。其主要配置参数如下：
+## Tomcat优化
+###### Tomcat的Connector是Tomcat接收HTTP请求的关键模块，我们可以配置它来指定IO模式，以及处理通过这个Connector接受到的请求的处理线程数以及其它一些常用的HTTP策略。其主要配置参数如下：
 	--protocol默认值是BlockingIO
 	1.protocol="org.apache.coyote.http11.Http11NioProtocol" 指定使用NIO模型来接受HTTP请求
 	2.acceptorThreadCount="2"，使用NIO模型是接受的线程数目
 	3.配置线程池来处理HTTP请求
 
-##Apr插件提高Tomcat性能
+## Apr插件提高Tomcat性能
 	(1)安装APR tomcat-native插件
         apr-1.3.8.tar.gz   安装在/usr/local/apr
         #tar zxvf apr-1.3.8.tar.gz
