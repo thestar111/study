@@ -1,6 +1,6 @@
 ## Kafka集群配置：
 
-Kafka做为高速存取的MQ队列，需要持久化大量的数据，消息消费的偏移量和集群服务管理存储在Zookeeper上，测试时可以使用自带的zookeeper，商用环境使用时需要规划独立的zookeeper集群，zookeeper集群搭建方案请参考[zookeeper手工安装配置](mailto:genghuanzhong@huaewi.com).
+Kafka做为高速存取的MQ队列，需要持久化大量的数据，消息消费的偏移量和集群服务管理存储在Zookeeper上，测试时可以使用自带的zookeeper，商用环境使用时需要规划独立的zookeeper集群，zookeeper集群搭建方案请参考上[Zookeeper.md].
 
 #### 配置文件
 	 Path:   /kafka_2.9.2-0.8.1/config/server.properties	属性配置文件
