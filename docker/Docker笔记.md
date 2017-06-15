@@ -1,4 +1,23 @@
 ## Docker笔记
+
+###### 介绍
+	Docker: 开源的容器虚拟化平台
+    docker 使用客户端-服务器 (C/S) 架构模式。Docker 客户端会与 Docker 守护进程进行通信。
+![docker icon](docker_desc.png)
+
+
+###### Docker 守护进程
+	Docker 守护进程运行在一台主机上。用户并不直接和守护进程进行交互，而是通过 Docker 客户端间接和其通信
+
+
+###### Docker 内部
+	Docker 镜像 - Docker images   --- Docker 镜像是  Docker 容器运行时的只读模板，每一个镜像由一系列的层 (layers) 组成
+    Docker 仓库 - Docker registeries   ---  Docker 仓库用来保存镜像，可以理解为代码控制中的代码仓库
+    Docker 容器 - Docker containers	---   Docker 容器和文件夹很类似，一个Docker容器包含了所有的某个应用运行所需要的环境.Docker 容器可以运行、开始、停止、移动和删除。每一个 Docker 容器都是独立和安全的应用平台，Docker 容器是 Docker 的运行部分
+
+
+###### 安装
+
 	install docker：
 	linux：Centos下安装，yum install docker，然后启动docker：service docker start
 	windows：安装 Docker Toolbox，一步一步默认安装即可，安装完成运行Docker quickstart即可，如果启动失败可能是boot2docker启动器下不来，需要手动下载放到C盘目录下即可。默认启动一个192.168.0.99.100的镜像服务器。
@@ -251,6 +270,35 @@
 	$ sudo docker inspect -f "{{ .HostConfig.Links }}" web
 	[/db:/web/db]
 ###### 容器之间的链接实际做了什么？一个链接允许一个源容器提供信息访问给一个接收容器。在本例中，web 容器作为一个接收者，允许访问源容器 db 的相关服务信息。Docker 创建了一个安全隧道而不需要对外公开任何端口给外部容器，因此不需要在创建容器的时候添加-p或-P指定对外公开的端口，这也是链接容器的最大好处，本例为 PostgreSQL 数据库
+
+## 构建私有库
+###### Docker 官方提供了 docker registry 的构建方法 docker-registry
+###### 构建docker-registry仓库
+	安装 docker
+	运行 registry:docker run -p 5000:5000 registry
+	这种方法通过 Docker hub 使用官方镜像 official image from the Docker hub
+
+###### 使用 github clone 手动安装
+
+    $ git clone https://github.com/dotcloud/docker-registry.git
+    $ cd docker-registry/
+    $ cp config/config_sample.yml config/config.yml
+    $ mkdir /data/registry -p
+    $ pip install .
+###### 运行
+	docker-registry
+
+###### 提交指定容器到私有库
+	$ docker tag ubuntu:12.04 私有库IP:5000/ubuntu:12.04
+	$ docker push 私有库IP:5000/ubuntu
+
+
+
+
+
+
+
+
 
 
 
