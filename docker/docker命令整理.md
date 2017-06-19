@@ -213,7 +213,7 @@
 	docker push NAME[:TAG]
 
 ###### 构建镜像
-######docker commit 通过容器构建
+###### docker commit 通过容器构建
     docker commit [OPTIONS]CONTAINER [REPOSITORY[:TAG]
         -a,--author="" Author
             e.g.,"John Hannibal Smith hannibal@a-team.com"
