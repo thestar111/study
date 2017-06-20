@@ -328,3 +328,17 @@
     service docker restart
     ps -ef | grep docker
     docker info
+
+
+## 构建Docker镜像
+###### 查看环境变量
+	docker-machine env default
+###### 设置环境变量
+	export DOCKER_HOST=tcp://192.168.0.99.100:2376
+
+
+
+
+
+
+

@@ -232,3 +232,62 @@ See following URI patterns AND Result ：
     }
 #### 13.执行顺序
 	还是之前那个抛出异常的方法,访问后先执行请求过滤器,再匹配到相应方法,执行方法体,然后有异常,执行异常拦截器,其次执行回复过滤。
+
+
+
+
+#### 14.名称绑定
+
+
+###### 名称绑定
+
+	1.名称绑定，支持自定义注解，下面以记录日志为例，自定义Log自定义注解，支持方式、类上的注解
+    @NameBinding
+    @Target ({ElementType.TYPE, ElementType.METHOD})
+    @Retention (RetentionPolicy.RUNTIME)
+    public @interface Log
+    {
+    }
+    2.绑定Provider
+    @Log
+    @Provider
+    @Priority (Priorities.USER)
+    public class LogFilter implements ContainerRequestFilter, ContainerResponseFilter
+    {
+
+        private static final Logger logger = LoggerFactory.getLogger(LogFilter.class);
+
+        @Override
+        public void filter (ContainerRequestContext containerRequestContext) throws IOException
+        {
+            logger.info ("request log ... ");
+        }
+
+        @Override
+        public void filter (ContainerRequestContext containerRequestContext,
+                ContainerResponseContext containerResponseContext) throws IOException
+        {
+            logger.info ("response log ... ");
+        }
+    }
+    3.注入Jersey容器中
+
+
+###### 动态绑定
+	1.动态绑定,可以更个性化的加载,在运行期只要匹配的动态绑定扩展的方法，面向切面的Provider就会被加载。动态的方式分配资源方法的筛选器和拦截器
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
