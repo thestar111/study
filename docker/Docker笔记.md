@@ -292,12 +292,31 @@
 	$ docker tag ubuntu:12.04 私有库IP:5000/ubuntu:12.04
 	$ docker push 私有库IP:5000/ubuntu
 
+## Docker 加速器
+
+### linux
+###### Docker 版本在 1.12 或更高，创建或修改 /etc/docker/daemon.json 文件
+    {
+    	"registry-mirrors": [
+        	"加速地址"
+    	],
+    	"insecure-registries": []
+	}
+
+###### Docker 版本在 1.8 与 1.11 之间
+
+	在配置文件中的 DOCKER_OPTS 加入--registry-mirror=加速地址
 
 
+###### 重启Docker
+	service docker restart
 
 
-
-
+### Docker Toolbox配置
+	docker-machine ssh default
+    sudo sed -i "s|EXTRA_ARGS='|EXTRA_ARGS='--registry-mirror=加速地址 |g" /var/lib/boot2docker/profile
+	exit
+	docker-machine restart default
 
 
 

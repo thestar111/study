@@ -17,12 +17,12 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
-    
+
     2.自定义获取yml配置文件
     添加注解，指定配置文件中前缀
     @Configuration	#标识改类为配置类,相当于在XML定义，可以在该类下使用@Bean注解
 	@ConfigurationProperties(prefix="spring.datasource")	#指定配置文件中的配置项前缀
-    
+
 
 
 
