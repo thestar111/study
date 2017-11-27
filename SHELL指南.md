@@ -141,6 +141,10 @@ ${!varprefix@}  | 匹配之前所有以varprefix开头进行声明的变量
     @${bill_template_sql};
     EOF
 
+###### 切换SHELL脚本环境
+	chsh -s [/bin/ksh] 用户
+	或者
+    chsh
 
 
 
