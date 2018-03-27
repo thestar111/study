@@ -9,7 +9,7 @@
 
 ###### Tomcat 通过启用APR插件的运行模式，通过系统级别的IO方式来提高tomcat的请求和响应时间
 
-	(1)安装APR tomcat-native插件
+	  (1)安装APR tomcat-native插件
         apr-1.3.8.tar.gz   安装在/usr/local/apr
         #tar zxvf apr-1.3.8.tar.gz
         #cd apr-1.3.8
@@ -295,64 +295,7 @@
 	 # rm -rf /usr/local/apache-tomcat-8.5.16/webapps/*
 	 # rm -rf /usr/local/apache-tomcat-8.5.16/conf/tomcat-users.xml
 
+###### 7. 新建${TOMCAT_HOME}/bin/setenv.sh文件，内容如下：
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	CATALINA_OPTS="-server -Xmx4G -Xms4G"
 

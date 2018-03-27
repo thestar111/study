@@ -147,6 +147,13 @@ ${!varprefix@}  | 匹配之前所有以varprefix开头进行声明的变量
     chsh
 
 
+###### ** 执行sh ./xxx.sh出现：“Syntax error: “(” unexpected”的解决方法 **
+
+	由于Ubuntu和Debian系统为了加快系统启动速度，用dash代替了传统的bash。解决办法就是取消dash配置：命令
+
+    sudo dpkg-reconfigure dash
+
+    在选项中选择No，就搞定了
 
 
 
