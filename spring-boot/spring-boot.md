@@ -29,3 +29,9 @@
 
 特别注意
 【*】SpringBoot启动类(默认扫描自己子目录下的类)一定要放在所有类的父包目录下，这样系统启动的时候才会扫描启动类下的子目录下的Bean，否则系统会启动报错
+
+
+## 					打赏
+![alipay_jpg](https://github.com/thestar111/resource/blob/master/alipay.jpg)
+![wxpay_jpg](https://github.com/thestar111/resource/blob/master/wxpay.jpg)
+

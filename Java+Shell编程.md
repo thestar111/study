@@ -166,3 +166,7 @@
             CommandLine cmdl = CommandLine.parse(cmd);
         }
     }
+
+	## 					打赏
+![alipay_jpg](https://github.com/thestar111/resource/blob/master/alipay.jpg)
+![wxpay_jpg](https://github.com/thestar111/resource/blob/master/wxpay.jpg)

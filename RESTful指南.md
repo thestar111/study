@@ -277,6 +277,10 @@ See following URI patterns AND Result ：
 	1.动态绑定,可以更个性化的加载,在运行期只要匹配的动态绑定扩展的方法，面向切面的Provider就会被加载。动态的方式分配资源方法的筛选器和拦截器
 	2.动态绑定需要实现DynamicFeature这个接口，然后实现configure方法，匹配目标方法类是否是需要拦截的，如果是，面向切面的Provider将会被加载
 
+## 					打赏
+![alipay_jpg](https://github.com/thestar111/resource/blob/master/alipay.jpg)
+![wxpay_jpg](https://github.com/thestar111/resource/blob/master/wxpay.jpg)
+
 
 
 

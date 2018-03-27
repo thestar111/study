@@ -18,3 +18,7 @@
 	http.cors.enabled: true
 	http.cors.allow-origin: "*"
 
+
+	## 					打赏
+![alipay_jpg](https://github.com/thestar111/resource/blob/master/alipay.jpg)
+![wxpay_jpg](https://github.com/thestar111/resource/blob/master/wxpay.jpg)

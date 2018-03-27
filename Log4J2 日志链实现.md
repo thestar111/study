@@ -46,3 +46,16 @@
 
 ![logChainFilter icon](images/logChainFilter.jpg)
 
+## Spring Mvc 支持日志链实现
+
+		日志实现同上，但是我们需要将TranceID添加到响应头当中，如果在每个接口方法中添加，会觉得很笨，最好能统一为接口请求添加。所以我们需要用到Spring Mvc的一个Controller的通知，动态加上去
+
+## 实现方式
+	编写一个接口实现ResponseBodyAdvice<Object>接口，添加注解@ControllerAdvice，此时该接口并成功注入为Controller层的切面通知，可以获取Response对象
+
+![ControllerAdvice_jpg](images/controllerAdvice.jpg)
+
+
+## 					打赏
+![alipay_jpg](https://github.com/thestar111/resource/blob/master/alipay.jpg)
+![wxpay_jpg](https://github.com/thestar111/resource/blob/master/wxpay.jpg)

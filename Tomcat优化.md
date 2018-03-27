@@ -299,3 +299,7 @@
 
 	CATALINA_OPTS="-server -Xmx4G -Xms4G"
 
+## 					打赏
+![alipay_jpg](https://github.com/thestar111/resource/blob/master/alipay.jpg)
+![wxpay_jpg](https://github.com/thestar111/resource/blob/master/wxpay.jpg)
+
