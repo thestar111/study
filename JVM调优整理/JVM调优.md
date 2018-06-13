@@ -24,7 +24,7 @@
 		LastGcInfo: 最近一次GC事件的详细信息。包括 GC事件的持续时间(duration), 开始时间(startTime) 和 结束时间(endTime), 以及各个内存池在最近一次GC之前和之后的使用情况,
 		MemoryPoolNames: 各个内存池的名称,
 		Name: 垃圾收集器的名称
-		ObjectName: 由JMX规范定义的 MBean的名字,,
+		ObjectName: 由JMX规范定义的 MBean的名字,
 		Valid: 此收集器是否有效。本人只见过 “true“的情况 (^_^)
 		根据经验, 这些信息对GC的性能来说,不能得出什么结论. 只有编写程序, 获取GC相关的 JMX 信息来进行统计和分析。 在下文可以看到, 一般也不怎么关注 MBean , 但 MBean 对于理解GC的原理倒是挺有用的。
 

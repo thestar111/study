@@ -2,7 +2,42 @@
 
 ## 1. Docker与微服务-使用Maven插件构建Docker镜像
 
+	前提：自己搭建的私有Docker仓库需要开放远程API端口，要不然你无法推送镜像到私有仓库下，开放Docker远程私有仓库端口步骤：
+	Ubuntu系统下：
+	1. 配置
+	$ sudo vim /lib/systemd/system/docker.service
+	修改ExecStart一行，改为：
+	ExecStart=/usr/bin/docker -H fd:// -H tcp://0.0.0.0:22375
+    2. 重启Docker服务
+    $ sudo systemctl daemon-reload
+	$ sudo systemctl restart docker
+	3. 测试
+	curl http://localhost:22375/version
 
+**注意：如果遇到错误信息 Get https://192.168.0.11:5000/v1/_ping: http: server gave HTTP response to HTTPS client**
+
+###### 解决办法
+**在”/etc/docker/“目录下，创建”daemon.json“文件。在文件中写入：**
+
+```
+    {
+        "insecure-registries": [
+            "192.168.0.11:5000"
+        ]
+    }
+    //多个私服写法，逗号分隔即可
+    {
+        "insecure-registries": [
+            "192.168.0.12:5000",
+            "192.168.0.11:5000"
+        ]
+    }
+```
+
+###### 重启DOCKER
+	systemctl restart docker
+
+###### Windows环境配置环境变量	DOCKER_HOST ： tcp://192.168.0.11:22375
 
 
 ## 2.工具
