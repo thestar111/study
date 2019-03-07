@@ -21,7 +21,3 @@ HTTPS   | 让自己的网站支持HTTPS协议
 Redis   | 缓存数据库笔记
 
 #### 如果需要视频教程可以 + QQ 1005237255 包括JAVA、Android、Python、ES、大数据Hadoop、Spark等
-
-## 					打赏
-![alipay_jpg](https://github.com/thestar111/resource/blob/master/alipay.jpg)
-![wxpay_jpg](https://github.com/thestar111/resource/blob/master/wxpay.jpg)
