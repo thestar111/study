@@ -19,5 +19,6 @@ Zookeeper | 分布式服务协调部件
 Fastdfs + Nginx | 分布式文件系统搭建
 HTTPS   | 让自己的网站支持HTTPS协议
 Redis   | 缓存数据库笔记
-
+ 
+可代做系统，毕业设计 +v : a18779206989
 #### 如果需要视频教程可以 + QQ 1005237255 包括JAVA、Android、Python、ES、大数据Hadoop、Spark等
